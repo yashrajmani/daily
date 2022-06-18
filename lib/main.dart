@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:news/home.dart';
+import 'package:news/components/bottombar.dart';
 import 'package:news/routes/headlines.dart';
-import 'package:news/routes/newsdetail.dart';
+import 'package:news/components/newsdetail.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,12 +15,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.grey,
-        scaffoldBackgroundColor: Colors.black,
+        primarySwatch: Colors.amber,
+        scaffoldBackgroundColor: Colors.amberAccent,
       ),
-      home: Home(),
+      home: MainPage(),
     );
   }
 }

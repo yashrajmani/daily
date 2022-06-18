@@ -13,17 +13,24 @@ class weathercard extends StatelessWidget {
       child: Container(
         width: 110,
         height: 100,
+
         child: Card(
-          color: Colors.lime,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(25.0),
+          ),
+          color: Colors.amberAccent,
+          shadowColor: Colors.red,
+          elevation: 8,
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
                 val,
-                style: TextStyle(color: Colors.blue, fontSize: 50),
+                style: TextStyle(color: Colors.black, fontSize: 46),
               ),
               Text(
                 title,
-                style: TextStyle(color: Colors.blue, fontSize: 20),
+                style: TextStyle(color: Colors.indigo, fontSize: 16),
               ),
             ],
           ),
