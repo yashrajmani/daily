@@ -33,7 +33,12 @@ class _HeadLinesState extends State<HeadLines> {
 
               );
             } else {
-              return Center(child: CircularProgressIndicator());
+              return Center(child: Container(
+                width: MediaQuery.of(context).size.width*0.8,
+                height: MediaQuery.of(context).size.height*0.8,
+                child: Image.asset('assets/images/loading_news.gif',),
+              )
+              );
             }
           },
         ));

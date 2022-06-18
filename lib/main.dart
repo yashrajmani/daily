@@ -16,8 +16,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        fontFamily: 'Ubuntu',
         primarySwatch: Colors.amber,
-        scaffoldBackgroundColor: Colors.amberAccent,
+        scaffoldBackgroundColor: Colors.amber,
       ),
       home: MainPage(),
     );
