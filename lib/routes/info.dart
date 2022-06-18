@@ -43,11 +43,11 @@ class _InfoState extends State<Info> {
               height: MediaQuery.of(context).size.height * 0.02,
             ),
             Card(
-              elevation: 20,
+              elevation: 10,
               shadowColor: Colors.red,
               color: Colors.purple,
               shape: StadiumBorder(
-                side: BorderSide(color: Colors.black),
+                side: BorderSide(color: Colors.purple),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
