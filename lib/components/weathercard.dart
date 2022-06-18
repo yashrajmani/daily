@@ -11,8 +11,8 @@ class weathercard extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       child: Container(
-        width: 110,
-        height: 100,
+        width: MediaQuery.of(context).size.width*0.3,
+        height: MediaQuery.of(context).size.width*0.3,
 
         child: Card(
           shape: RoundedRectangleBorder(

@@ -28,7 +28,6 @@ class NewsDetail extends StatelessWidget {
                     flex: 1,
                     child: SizedBox(
                       width: double.infinity,
-                      height: 300,
                       child: Image.network(
                         news.urlToImage.toString(),
                         fit: BoxFit.cover,
