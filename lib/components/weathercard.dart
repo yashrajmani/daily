@@ -24,7 +24,7 @@ class weathercard extends StatelessWidget {
           elevation: 8,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
                 val,
@@ -32,12 +32,15 @@ class weathercard extends StatelessWidget {
               ),
               Text(
                 unit,
-                style: TextStyle(color: Colors.black, fontSize: 14),
+                style: TextStyle(color: Colors.black, fontSize: 12),
+              ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height*0.01,
               ),
 
               Text(
                 title,
-                style: TextStyle(color: Colors.indigo, fontSize: 18,fontWeight: FontWeight.w700),
+                style: TextStyle(color: Colors.indigo, fontSize: 15,fontWeight: FontWeight.w700),
               ),
             ],
           ),

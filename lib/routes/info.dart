@@ -32,7 +32,7 @@ class _InfoState extends State<Info> {
   void initState() {
     super.initState();
     getLocation();
-    getWeather();
+    // getWeather();
   }
 
   //WEATHER-------------------------------------------------------------------
@@ -60,191 +60,206 @@ class _InfoState extends State<Info> {
       body: FutureBuilder(
         future: getWeather(),
         builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.done) {
+          if (snapshot.connectionState == ConnectionState.done && lat != null) {
             Weather? weather = snapshot.data as Weather?;
             String? im = weather?.icon.toString();
-            return Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.02,
-                ),
+
+            return Stack(
+              children:[
                 Container(
-                  height: MediaQuery.of(context).size.height * 0.3,
                   width: double.infinity,
-                  child: Card(
-                    elevation: 10,
-                    shadowColor: Colors.red,
-                    color: Colors.purple,
-                    shape: StadiumBorder(
-                      side: BorderSide(color: Colors.purple),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.02,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              IconButton(
-                                icon: Icon(
-                                  Icons.location_on_rounded,
-                                  color: Colors.yellow,
-                                  size: 25,
-                                ),
-                                onPressed: () {
-                                  getLocation();
-                                },
-                              ),
-                              SizedBox(
-                                width: MediaQuery.of(context).size.width * 0.02,
-                              ),
-                              Text(
-                                weather!.name.toString()  ,
-                                  // weather.country.toString(),
-                                style: TextStyle(
-                                    color: Colors.white, fontSize: 30),
-                              ),
-                            ],
-                          ),
-                          SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.005,
-                            child: Divider(
-                              thickness: 2,
-                              color: Colors.yellow,
-                              endIndent: 30,
-                              indent: 30,
-                            ),
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.02,
-                              ),
-                              Text(
-                                "Latitude : $lat",
-                                style: TextStyle(
-                                    color: Colors.black, fontSize: 14),
-                              ),
-                              SizedBox(
-                                width: MediaQuery.of(context).size.width * 0.03,
-                              ),
-                              Text(
-                                "Longitude : $long",
-                                style: TextStyle(
-                                    color: Colors.black, fontSize: 14),
-                              ),
-                            ],
-                          ),
-                          SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.02,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
+                    child: Image.asset("assets/images/bg.jpg",fit: BoxFit.cover,)),
+                Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.02,
+                  ),
+                    Container(
+                      height: MediaQuery.of(context).size.height * 0.3,
+                      width: double.infinity,
+                      child: Card(
+                        elevation: 10,
+                        shadowColor: Colors.red,
+                        color: Colors.purple,
+                        shape: StadiumBorder(
+                          side: BorderSide(color: Colors.purple),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              CircleAvatar(
-                                child: Image.network(
-                                  'http://openweathermap.org/img/wn/$im.png',
-                                  color: Colors.black,
-                                ),
-                                radius: 30,
-                              ),
                               SizedBox(
-                                width: MediaQuery.of(context).size.width * 0.02,
+                                height: MediaQuery.of(context).size.height * 0.02,
                               ),
-                              Column(
+                              Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  Text(
-                                    weather.main.toString(),
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.w600,
-                                        fontSize: 26),
+                                  IconButton(
+                                    icon: Icon(
+                                      Icons.location_on_rounded,
+                                      color: Colors.yellow,
+                                      size: 25,
+                                    ),
+                                    onPressed: () {
+                                      getLocation();
+                                    },
+                                  ),
+                                  SizedBox(
+                                    width:
+                                        MediaQuery.of(context).size.width * 0.02,
                                   ),
                                   Text(
-                                    weather.description.toString(),
+                                    weather!.name.toString() +
+                                        " : " +
+                                        weather.country.toString(),
+                                    // weather.country.toString(),
                                     style: TextStyle(
-                                        color: Colors.white, fontSize: 20),
+                                        color: Colors.white, fontSize: 30),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(
+                                height:
+                                    MediaQuery.of(context).size.height * 0.005,
+                                child: Divider(
+                                  thickness: 2,
+                                  color: Colors.yellow,
+                                  endIndent: 30,
+                                  indent: 30,
+                                ),
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  SizedBox(
+                                    height:
+                                        MediaQuery.of(context).size.height * 0.02,
+                                  ),
+                                  Text(
+                                    "Latitude : $lat",
+                                    style: TextStyle(
+                                        color: Colors.black, fontSize: 14),
+                                  ),
+                                  SizedBox(
+                                    width:
+                                        MediaQuery.of(context).size.width * 0.03,
+                                  ),
+                                  Text(
+                                    "Longitude : $long",
+                                    style: TextStyle(
+                                        color: Colors.black, fontSize: 14),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(
+                                height: MediaQuery.of(context).size.height * 0.02,
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  CircleAvatar(
+                                    child: Image.network(
+                                      'http://openweathermap.org/img/wn/$im.png',
+                                      color: Colors.black,
+                                    ),
+                                    radius: 30,
+                                  ),
+                                  SizedBox(
+                                    width:
+                                        MediaQuery.of(context).size.width * 0.02,
+                                  ),
+                                  Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        weather.main.toString(),
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 26),
+                                      ),
+                                      Text(
+                                        weather.description.toString(),
+                                        style: TextStyle(
+                                            color: Colors.white, fontSize: 20),
+                                      ),
+                                    ],
                                   ),
                                 ],
                               ),
                             ],
                           ),
+                        ),
+                      ),
+
+                  ),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.02,
+                  ),
+                  Expanded(
+                    child: Container(
+                      height: double.infinity,
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                          color: Colors.indigo,
+                          borderRadius: const BorderRadius.only(
+                              topRight: Radius.circular(50),
+                              topLeft: Radius.circular(50))),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                weathercard(
+                                    val: weather.temp.toString(),
+                                    unit: "Celsius",
+                                    title: "Temperature"),
+                                weathercard(
+                                    val: weather.feel.toString(),
+                                    unit: "Celsius",
+                                    title: "Feels Like"),
+                                weathercard(
+                                    val: weather.clouds.toString(),
+                                    unit: "Percent",
+                                    title: "Clouds"),
+                              ],
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                weathercard(
+                                    val: weather.pressure.toString(),
+                                    unit: "hPa",
+                                    title: "Pressure"),
+                                weathercard(
+                                    val: weather.windspeed.toString(),
+                                    unit: "Meter/Sec",
+                                    title: "Wind"),
+                                weathercard(
+                                    val: weather.humidity.toString(),
+                                    unit: "Percent",
+                                    title: "Humidity"),
+                              ],
+                            ),
+                          )
                         ],
                       ),
                     ),
                   ),
-                ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.02,
-                ),
-                Expanded(
-                  child: Container(
-                    height: double.infinity,
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                        color: Colors.indigo,
-                        borderRadius: const BorderRadius.only(
-                            topRight: Radius.circular(50),
-                            topLeft: Radius.circular(50))),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              weathercard(
-                                  val: weather.temp.toString(),
-                                  unit: "Celsius",
-                                  title: "Temp"),
-                              weathercard(
-                                  val: weather.feel.toString(),
-                                  unit: "Celsius",
-                                  title: "Feels Like"),
-                              weathercard(
-                                  val: weather.clouds.toString(),
-                                  unit: "Percent",
-                                  title: "Clouds"),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              weathercard(
-                                  val: weather.pressure.toString(),
-                                  unit: "hPa",
-                                  title: "Pressure"),
-                              weathercard(
-                                  val: weather.windspeed.toString(),
-                                  unit: "Meter/Sec",
-                                  title: "Wind"),
-                              weathercard(
-                                  val: weather.humidity.toString(),
-                                  unit: "Percent",
-                                  title: "Humidity"),
-                            ],
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-              ],
+                ],
+              ),
+              ]
             );
           } else {
             return Center(
