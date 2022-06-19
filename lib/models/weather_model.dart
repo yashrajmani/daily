@@ -1,9 +1,9 @@
 class Weather {
-   final String name;
-  final String country;
-  final String icon;
-  final String description;
-  final String main;
+   final String? name;
+  final String? country;
+  final String? icon;
+  final String? description;
+  final String? main;
 
 
   final double temp;

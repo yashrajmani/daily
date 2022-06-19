@@ -47,7 +47,7 @@ class _InfoState extends State<Info> {
       print(jsonDecode(response.body));
       return Weather.fromJson(jsonDecode(response.body));
     } else {
-      print("BAD REQUEST @ NEWS API");
+      print("BAD REQUEST @ WEATHER API");
       throw ("NEWS API ERROR ");
     }
   }
@@ -62,7 +62,7 @@ class _InfoState extends State<Info> {
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
             Weather? weather = snapshot.data as Weather?;
-            String im = weather!.icon.toString();
+            String? im = weather?.icon.toString();
             return Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -106,7 +106,8 @@ class _InfoState extends State<Info> {
                                 width: MediaQuery.of(context).size.width * 0.02,
                               ),
                               Text(
-                                weather.name + " : " + weather.country,
+                                weather!.name.toString()  ,
+                                  // weather.country.toString(),
                                 style: TextStyle(
                                     color: Colors.white, fontSize: 30),
                               ),
@@ -164,14 +165,14 @@ class _InfoState extends State<Info> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Text(
-                                    weather.main.toUpperCase(),
+                                    weather.main.toString(),
                                     style: TextStyle(
                                         color: Colors.white,
                                         fontWeight: FontWeight.w600,
                                         fontSize: 26),
                                   ),
                                   Text(
-                                    weather.description.toUpperCase(),
+                                    weather.description.toString(),
                                     style: TextStyle(
                                         color: Colors.white, fontSize: 20),
                                   ),
