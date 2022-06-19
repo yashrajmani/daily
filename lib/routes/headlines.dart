@@ -41,6 +41,7 @@ class _HeadLinesState extends State<HeadLines> {
               );
             }
           },
-        ));
+        )
+    );
   }
 }
