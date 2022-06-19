@@ -25,7 +25,10 @@ class MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Daily"),
+        title: Text("DAILY"),
+        elevation: 10,
+        foregroundColor: Colors.yellow,
+        backgroundColor: Colors.indigo,
         centerTitle: true,
       ),
       body: screen[index],
@@ -91,7 +94,6 @@ class MainPageState extends State<MainPage> {
                       size: 35,
                     ),
             ),
-
           ],
         ),
       ),
