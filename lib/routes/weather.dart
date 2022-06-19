@@ -264,10 +264,10 @@ class _InfoState extends State<Info> {
           } else {
             return Center(
                 child: Container(
-              width: MediaQuery.of(context).size.width * 0.8,
-              height: MediaQuery.of(context).size.height * 0.8,
+              width: MediaQuery.of(context).size.width * 0.6,
+              height: MediaQuery.of(context).size.height * 0.6,
               child: Image.asset(
-                'assets/images/loading_news.gif',
+                'assets/images/loading_weather.gif',
               ),
             ));
           }

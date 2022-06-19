@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:news/routes/headlines.dart';
-import 'package:news/routes/info.dart';
+import 'package:news/routes/weather.dart';
 import 'package:news/components/newsdetail.dart';
 
 import '../routes/demo.dart';
