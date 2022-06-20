@@ -8,7 +8,7 @@
 # Daily : Weather|News|Todo
 ## Flutter application useful in daily-life.
 
-## DOWNLOAD THE APK : <SOON>
+## DOWNLOAD THE APK : -Releasing soon-
 
 ## Tech stack:
 - Android Studio
